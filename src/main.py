@@ -14,6 +14,9 @@ def main():
     cell2.draw()
     cell3 = Cell(200, 200, 210, 210, win, True, True, False, False)
     cell3.draw()
+
+    cell1.draw_move(cell2, True)
+    cell2.draw_move(cell3, False)
     win.wait_for_close()
     print("Bye!")
 
