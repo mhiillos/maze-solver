@@ -1,0 +1,3 @@
+BACKGROUND_COLOR = "gray15"
+
+CELL_COLOR = "black"

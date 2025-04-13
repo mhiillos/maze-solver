@@ -1,5 +1,6 @@
 from line import Line, Point
 from window import Window
+from constants import *
 
 class Cell():
     def __init__(self, x1, y1, x2, y2, win=None, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
@@ -19,18 +20,15 @@ class Cell():
         bottom_left = Point(self._x1, self._y2)
         bottom_right = Point(self._x2, self._y2)
         lines = []
-        if self.left_wall:
-            lines.append(Line(top_left, bottom_left))
-        if self.right_wall:
-            lines.append(Line(top_right, bottom_right))
-        if self.top_wall:
-            lines.append(Line(top_left, top_right))
-        if self.bottom_wall:
-            lines.append(Line(bottom_left, bottom_right))
-
+        color_left = CELL_COLOR if self.left_wall else BACKGROUND_COLOR
+        color_right = CELL_COLOR if self.right_wall else BACKGROUND_COLOR
+        color_top = CELL_COLOR if self.top_wall else BACKGROUND_COLOR
+        color_bottom = CELL_COLOR if self.bottom_wall else BACKGROUND_COLOR
         if self._win:
-            for line in lines:
-                self._win.draw_line(line, "black")
+            self._win.draw_line(Line(top_left, bottom_left), color_left)
+            self._win.draw_line(Line(top_right, bottom_right), color_right)
+            self._win.draw_line(Line(top_left, top_right), color_top)
+            self._win.draw_line(Line(bottom_left, bottom_right), color_bottom)
 
     # Draws a line between the middle of two cells
     def draw_move(self, to_cell, undo=False):
