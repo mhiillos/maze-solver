@@ -3,7 +3,7 @@ from window import Window
 from constants import *
 
 class Cell():
-    def __init__(self, x1, y1, x2, y2, win=None, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
+    def __init__(self, x1, y1, x2, y2, win=None, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True, visited=False):
         self.left_wall = left_wall
         self.right_wall = right_wall
         self.top_wall = top_wall
@@ -13,6 +13,7 @@ class Cell():
         self._x2 = x2
         self._y2 = y2
         self._win = win
+        self._visited = visited
 
     def draw(self):
         top_left = Point(self._x1, self._y1)
