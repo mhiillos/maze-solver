@@ -1,3 +1,4 @@
 BACKGROUND_COLOR = "gray15"
-
 CELL_COLOR = "black"
+BACKTRACK_PATH_COLOR = "gray"
+CORRECT_PATH_COLOR = "firebrick4"

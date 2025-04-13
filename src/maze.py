@@ -101,3 +101,44 @@ class Maze():
             for cell in col:
                 cell._visited = False
 
+    def solve(self):
+        return self._solve_r(0, 0)
+
+    def _solve_r(self, i, j):
+        self._animate()
+        current = self._cells[i][j]
+        current._visited = True
+        # If we are at the end, return True (maze solved)
+        if current == self._cells[-1][-1]:
+            return True
+        # Else, perform DFS
+        directions = [
+            (i, j-1, "top"),
+            (i, j+1, "bottom"),
+            (i-1, j, "left"),
+            (i+1, j, "right"),
+        ]
+        for direction in directions:
+            # Check that the direction has a cell
+            if not (0 <= direction[0] < len(self._cells)) or not (0 <= direction[1] < len(self._cells[i])):
+                continue
+            # Check that there is not a wall
+            if getattr(self._cells[i][j], f"{direction[2]}_wall"):
+                continue
+            # Check that the cell has not been visited
+            next_cell = self._cells[direction[0]][direction[1]]
+            if next_cell._visited:
+                continue
+            # Draw the move and recurse
+            current.draw_move(next_cell)
+            if self._solve_r(direction[0], direction[1]):
+                return True
+            # If the correct path was not found, draw with undo on top
+            else:
+                current.draw_move(next_cell, True)
+        return False
+
+
+                
+
+
