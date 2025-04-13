@@ -2,7 +2,7 @@ from line import Line, Point
 from window import Window
 
 class Cell():
-    def __init__(self, x1, y1, x2, y2, win, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
+    def __init__(self, x1, y1, x2, y2, win=None, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
         self.left_wall = left_wall
         self.right_wall = right_wall
         self.top_wall = top_wall
@@ -28,8 +28,9 @@ class Cell():
         if self.bottom_wall:
             lines.append(Line(bottom_left, bottom_right))
 
-        for line in lines:
-            self._win.draw_line(line, "black")
+        if self._win:
+            for line in lines:
+                self._win.draw_line(line, "black")
 
     # Draws a line between the middle of two cells
     def draw_move(self, to_cell, undo=False):
