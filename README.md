@@ -2,7 +2,13 @@
 
 Maze generation and DFS-based solver visualization project.
 
-TODO for potential extensions:
+
+## Usage:
+
+    ./main.sh
+
+## TODO 
+Potential extensions:
 
 * Add other solving algorithms, like breadth-first search or A*
 * Make the visuals prettier, change the colors, etc
@@ -13,9 +19,3 @@ TODO for potential extensions:
 * If you made it a game, allow the user to race an algorithm
 * Make it 3 dimensional
 * Time the various algorithms and see which ones are the fastest
-
-## Usage:
-
-    ./main.sh
-
-    ./test.sh
